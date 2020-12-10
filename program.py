@@ -10,7 +10,7 @@ from bs4 import BeautifulSoup
 # User inputs the album to view
 while True:
     userQuery = 0
-    while not 1 < userQuery < 101:
+    while True:
         try:
             userQuery = int(input("\nPlease enter the album ID of the album you would like to display (1-100)\n"))
             if 0 < userQuery < 101:
@@ -34,10 +34,8 @@ while True:
 
     soup = BeautifulSoup(html_page, 'html.parser')
 
-    soupText = soup.findAll(text=True)
-
     # formatting data and making it into a list of dictionaries
-    text = eval(str(soupText[0]).replace("\n", ""))
+    text = eval(str(soup).replace("\n", ""))
 
     print(f"\nDisplaying photo album {userQuery}\n")
 
